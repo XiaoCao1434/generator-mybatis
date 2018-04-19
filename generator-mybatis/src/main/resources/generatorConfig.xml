@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!--指定了驱动jar包的位置-->
+    <classPathEntry location="D:/mvn_repository_new/mysql/mysql-connector-java/5.1.45/mysql-connector-java-5.1.45.jar"/>
+    
+    <context id="my" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--连接字符串-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/miaosha?useSSL=false" userId="root" password="root"/>
+		<!--指定生成entity实体类的具体位置-->
+        <javaModelGenerator targetPackage="com.beini.generatormybatis.pojo" targetProject="D:/workspace/space1/generator-mybatis/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+		<!--指定生成mybatis映射xml文件的具体位置-->
+        <sqlMapGenerator targetPackage="mapping" targetProject="D:/workspace/space1/generator-mybatis/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+		<!--指定生成mapper接口的具体位置-->
+        <javaClientGenerator targetPackage="com.beini.generatormybatis.dao" targetProject="D:/workspace/space1/generator-mybatis/src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="miaosha_user" domainObjectName="MiaoshaUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="miaosha_goods" domainObjectName="MiaoshaGoods" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="miaosha_orders" domainObjectName="MiaoshaOrders" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="order_info" domainObjectName="OrderInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="goods" domainObjectName="MsGoods" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="user" domainObjectName="MsUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+    </context>
+</generatorConfiguration>
