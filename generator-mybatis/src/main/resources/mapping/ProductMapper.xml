@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.beini.generatormybatis.dao.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.beini.generatormybatis.pojo.Product" >
+    <id column="pro_uuid" property="proUuid" jdbcType="VARCHAR" />
+    <result column="inregral" property="inregral" jdbcType="INTEGER" />
+    <result column="max_price" property="maxPrice" jdbcType="DOUBLE" />
+    <result column="min_price" property="minPrice" jdbcType="DOUBLE" />
+    <result column="pb_uuid" property="pbUuid" jdbcType="VARCHAR" />
+    <result column="pc_uuid" property="pcUuid" jdbcType="VARCHAR" />
+    <result column="picture_url" property="pictureUrl" jdbcType="VARCHAR" />
+    <result column="pro_marque" property="proMarque" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="stock" property="stock" jdbcType="INTEGER" />
+    <result column="warning_stock" property="warningStock" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pro_uuid, inregral, max_price, min_price, pb_uuid, pc_uuid, picture_url, pro_marque, 
+    status, stock, warning_stock
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where pro_uuid = #{proUuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from product
+    where pro_uuid = #{proUuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.beini.generatormybatis.pojo.Product" >
+    insert into product (pro_uuid, inregral, max_price, 
+      min_price, pb_uuid, pc_uuid, 
+      picture_url, pro_marque, status, 
+      stock, warning_stock)
+    values (#{proUuid,jdbcType=VARCHAR}, #{inregral,jdbcType=INTEGER}, #{maxPrice,jdbcType=DOUBLE}, 
+      #{minPrice,jdbcType=DOUBLE}, #{pbUuid,jdbcType=VARCHAR}, #{pcUuid,jdbcType=VARCHAR}, 
+      #{pictureUrl,jdbcType=VARCHAR}, #{proMarque,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{stock,jdbcType=INTEGER}, #{warningStock,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.beini.generatormybatis.pojo.Product" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="proUuid != null" >
+        pro_uuid,
+      </if>
+      <if test="inregral != null" >
+        inregral,
+      </if>
+      <if test="maxPrice != null" >
+        max_price,
+      </if>
+      <if test="minPrice != null" >
+        min_price,
+      </if>
+      <if test="pbUuid != null" >
+        pb_uuid,
+      </if>
+      <if test="pcUuid != null" >
+        pc_uuid,
+      </if>
+      <if test="pictureUrl != null" >
+        picture_url,
+      </if>
+      <if test="proMarque != null" >
+        pro_marque,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="stock != null" >
+        stock,
+      </if>
+      <if test="warningStock != null" >
+        warning_stock,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="proUuid != null" >
+        #{proUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="inregral != null" >
+        #{inregral,jdbcType=INTEGER},
+      </if>
+      <if test="maxPrice != null" >
+        #{maxPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="minPrice != null" >
+        #{minPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="pbUuid != null" >
+        #{pbUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="pcUuid != null" >
+        #{pcUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureUrl != null" >
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="proMarque != null" >
+        #{proMarque,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="stock != null" >
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="warningStock != null" >
+        #{warningStock,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.beini.generatormybatis.pojo.Product" >
+    update product
+    <set >
+      <if test="inregral != null" >
+        inregral = #{inregral,jdbcType=INTEGER},
+      </if>
+      <if test="maxPrice != null" >
+        max_price = #{maxPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="minPrice != null" >
+        min_price = #{minPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="pbUuid != null" >
+        pb_uuid = #{pbUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="pcUuid != null" >
+        pc_uuid = #{pcUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureUrl != null" >
+        picture_url = #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="proMarque != null" >
+        pro_marque = #{proMarque,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="stock != null" >
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="warningStock != null" >
+        warning_stock = #{warningStock,jdbcType=INTEGER},
+      </if>
+    </set>
+    where pro_uuid = #{proUuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.beini.generatormybatis.pojo.Product" >
+    update product
+    set inregral = #{inregral,jdbcType=INTEGER},
+      max_price = #{maxPrice,jdbcType=DOUBLE},
+      min_price = #{minPrice,jdbcType=DOUBLE},
+      pb_uuid = #{pbUuid,jdbcType=VARCHAR},
+      pc_uuid = #{pcUuid,jdbcType=VARCHAR},
+      picture_url = #{pictureUrl,jdbcType=VARCHAR},
+      pro_marque = #{proMarque,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      stock = #{stock,jdbcType=INTEGER},
+      warning_stock = #{warningStock,jdbcType=INTEGER}
+    where pro_uuid = #{proUuid,jdbcType=VARCHAR}
+  </update>
+</mapper>
