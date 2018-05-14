@@ -15,7 +15,7 @@
 
         <!--连接字符串-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/shop1?useSSL=false" userId="root" password="root"/>
+                        connectionURL="jdbc:mysql://localhost:3306/beini?useSSL=false" userId="root" password="root"/>
 		<!--指定生成entity实体类的具体位置-->
         <javaModelGenerator targetPackage="com.beini.generatormybatis.pojo" targetProject="D:/git_repository/generator-mybatis/generator-mybatis/src/main/java">
             <property name="enableSubPackages" value="true"/>
@@ -30,6 +30,10 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="product" domainObjectName="Product" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="yl_menu" domainObjectName="YlMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="yl_role" domainObjectName="YlRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="yl_role_menu" domainObjectName="YlRoleMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="yl_user" domainObjectName="YlUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="yl_user_role" domainObjectName="YlUserRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>

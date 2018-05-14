@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.beini.generatormybatis.dao.YlRoleMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.beini.generatormybatis.pojo.YlRoleMenu" >
+    <id column="ROLE_MENU_ID" property="roleMenuId" jdbcType="INTEGER" />
+    <result column="MENU_ID" property="menuId" jdbcType="INTEGER" />
+    <result column="ROLE_CODE" property="roleCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROLE_MENU_ID, MENU_ID, ROLE_CODE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yl_role_menu
+    where ROLE_MENU_ID = #{roleMenuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yl_role_menu
+    where ROLE_MENU_ID = #{roleMenuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.beini.generatormybatis.pojo.YlRoleMenu" >
+    insert into yl_role_menu (ROLE_MENU_ID, MENU_ID, ROLE_CODE
+      )
+    values (#{roleMenuId,jdbcType=INTEGER}, #{menuId,jdbcType=INTEGER}, #{roleCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.beini.generatormybatis.pojo.YlRoleMenu" >
+    insert into yl_role_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleMenuId != null" >
+        ROLE_MENU_ID,
+      </if>
+      <if test="menuId != null" >
+        MENU_ID,
+      </if>
+      <if test="roleCode != null" >
+        ROLE_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleMenuId != null" >
+        #{roleMenuId,jdbcType=INTEGER},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="roleCode != null" >
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.beini.generatormybatis.pojo.YlRoleMenu" >
+    update yl_role_menu
+    <set >
+      <if test="menuId != null" >
+        MENU_ID = #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="roleCode != null" >
+        ROLE_CODE = #{roleCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLE_MENU_ID = #{roleMenuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.beini.generatormybatis.pojo.YlRoleMenu" >
+    update yl_role_menu
+    set MENU_ID = #{menuId,jdbcType=INTEGER},
+      ROLE_CODE = #{roleCode,jdbcType=VARCHAR}
+    where ROLE_MENU_ID = #{roleMenuId,jdbcType=INTEGER}
+  </update>
+</mapper>

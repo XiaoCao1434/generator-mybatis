@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.beini.generatormybatis.dao.YlUserMapper" >
+  <resultMap id="BaseResultMap" type="com.beini.generatormybatis.pojo.YlUser" >
+    <id column="USER_CODE" property="userCode" jdbcType="VARCHAR" />
+    <result column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="USER_PASSWORD" property="userPassword" jdbcType="VARCHAR" />
+    <result column="YUNBIAO_USER_CODE" property="yunbiaoUserCode" jdbcType="VARCHAR" />
+    <result column="YUNBIAO_USER_PASSWORD" property="yunbiaoUserPassword" jdbcType="VARCHAR" />
+    <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="USER_MOBILE" property="userMobile" jdbcType="VARCHAR" />
+    <result column="USER_PHONE" property="userPhone" jdbcType="VARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="INTEGER" />
+    <result column="USER_STATUS" property="userStatus" jdbcType="INTEGER" />
+    <result column="USER_HEADER" property="userHeader" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_ACCOUNT" property="createAccount" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_ACCOUNT" property="updateAccount" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_CODE, ID, USER_NAME, USER_PASSWORD, YUNBIAO_USER_CODE, YUNBIAO_USER_PASSWORD, 
+    NICK_NAME, EMAIL, USER_MOBILE, USER_PHONE, USER_TYPE, USER_STATUS, USER_HEADER, CREATE_TIME, 
+    CREATE_ACCOUNT, UPDATE_TIME, UPDATE_ACCOUNT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from yl_user
+    where USER_CODE = #{userCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from yl_user
+    where USER_CODE = #{userCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.beini.generatormybatis.pojo.YlUser" >
+    insert into yl_user (USER_CODE, ID, USER_NAME, 
+      USER_PASSWORD, YUNBIAO_USER_CODE, YUNBIAO_USER_PASSWORD, 
+      NICK_NAME, EMAIL, USER_MOBILE, 
+      USER_PHONE, USER_TYPE, USER_STATUS, 
+      USER_HEADER, CREATE_TIME, CREATE_ACCOUNT, 
+      UPDATE_TIME, UPDATE_ACCOUNT)
+    values (#{userCode,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{userPassword,jdbcType=VARCHAR}, #{yunbiaoUserCode,jdbcType=VARCHAR}, #{yunbiaoUserPassword,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{userMobile,jdbcType=VARCHAR}, 
+      #{userPhone,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, #{userStatus,jdbcType=INTEGER}, 
+      #{userHeader,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateAccount,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.beini.generatormybatis.pojo.YlUser" >
+    insert into yl_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userCode != null" >
+        USER_CODE,
+      </if>
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userPassword != null" >
+        USER_PASSWORD,
+      </if>
+      <if test="yunbiaoUserCode != null" >
+        YUNBIAO_USER_CODE,
+      </if>
+      <if test="yunbiaoUserPassword != null" >
+        YUNBIAO_USER_PASSWORD,
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="userMobile != null" >
+        USER_MOBILE,
+      </if>
+      <if test="userPhone != null" >
+        USER_PHONE,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="userStatus != null" >
+        USER_STATUS,
+      </if>
+      <if test="userHeader != null" >
+        USER_HEADER,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="createAccount != null" >
+        CREATE_ACCOUNT,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateAccount != null" >
+        UPDATE_ACCOUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userCode != null" >
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="yunbiaoUserCode != null" >
+        #{yunbiaoUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="yunbiaoUserPassword != null" >
+        #{yunbiaoUserPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null" >
+        #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userHeader != null" >
+        #{userHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.beini.generatormybatis.pojo.YlUser" >
+    update yl_user
+    <set >
+      <if test="id != null" >
+        ID = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="yunbiaoUserCode != null" >
+        YUNBIAO_USER_CODE = #{yunbiaoUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="yunbiaoUserPassword != null" >
+        YUNBIAO_USER_PASSWORD = #{yunbiaoUserPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null" >
+        USER_MOBILE = #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        USER_PHONE = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        USER_STATUS = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userHeader != null" >
+        USER_HEADER = #{userHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAccount != null" >
+        CREATE_ACCOUNT = #{createAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAccount != null" >
+        UPDATE_ACCOUNT = #{updateAccount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USER_CODE = #{userCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.beini.generatormybatis.pojo.YlUser" >
+    update yl_user
+    set ID = #{id,jdbcType=INTEGER},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+      YUNBIAO_USER_CODE = #{yunbiaoUserCode,jdbcType=VARCHAR},
+      YUNBIAO_USER_PASSWORD = #{yunbiaoUserPassword,jdbcType=VARCHAR},
+      NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      USER_MOBILE = #{userMobile,jdbcType=VARCHAR},
+      USER_PHONE = #{userPhone,jdbcType=VARCHAR},
+      USER_TYPE = #{userType,jdbcType=INTEGER},
+      USER_STATUS = #{userStatus,jdbcType=INTEGER},
+      USER_HEADER = #{userHeader,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CREATE_ACCOUNT = #{createAccount,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_ACCOUNT = #{updateAccount,jdbcType=VARCHAR}
+    where USER_CODE = #{userCode,jdbcType=VARCHAR}
+  </update>
+</mapper>
