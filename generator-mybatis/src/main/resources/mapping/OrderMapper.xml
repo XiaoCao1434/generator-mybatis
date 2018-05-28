@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.beini.generatormybatis.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.beini.generatormybatis.pojo.Order" >
+    <id column="order_uuid" property="orderUuid" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="de_ad_uuid" property="deAdUuid" jdbcType="VARCHAR" />
+    <result column="logistics_fee" property="logisticsFee" jdbcType="DOUBLE" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="order_amount_total" property="orderAmountTotal" jdbcType="DOUBLE" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="orderlogistics_no" property="orderlogisticsNo" jdbcType="VARCHAR" />
+    <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR" />
+    <result column="pay_channel" property="payChannel" jdbcType="VARCHAR" />
+    <result column="product_amount_total" property="productAmountTotal" jdbcType="DOUBLE" />
+    <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="shop_uuid" property="shopUuid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_uuid, create_time, de_ad_uuid, logistics_fee, open_id, order_amount_total, 
+    order_status, orderlogistics_no, out_trade_no, pay_channel, product_amount_total, 
+    send_time, shop_uuid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where order_uuid = #{orderUuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_order
+    where order_uuid = #{orderUuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.beini.generatormybatis.pojo.Order" >
+    insert into t_order (order_uuid, create_time, de_ad_uuid, 
+      logistics_fee, open_id, order_amount_total, 
+      order_status, orderlogistics_no, out_trade_no, 
+      pay_channel, product_amount_total, send_time, 
+      shop_uuid)
+    values (#{orderUuid,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{deAdUuid,jdbcType=VARCHAR}, 
+      #{logisticsFee,jdbcType=DOUBLE}, #{openId,jdbcType=VARCHAR}, #{orderAmountTotal,jdbcType=DOUBLE}, 
+      #{orderStatus,jdbcType=INTEGER}, #{orderlogisticsNo,jdbcType=VARCHAR}, #{outTradeNo,jdbcType=VARCHAR}, 
+      #{payChannel,jdbcType=VARCHAR}, #{productAmountTotal,jdbcType=DOUBLE}, #{sendTime,jdbcType=TIMESTAMP}, 
+      #{shopUuid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.beini.generatormybatis.pojo.Order" >
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderUuid != null" >
+        order_uuid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="deAdUuid != null" >
+        de_ad_uuid,
+      </if>
+      <if test="logisticsFee != null" >
+        logistics_fee,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="orderAmountTotal != null" >
+        order_amount_total,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="orderlogisticsNo != null" >
+        orderlogistics_no,
+      </if>
+      <if test="outTradeNo != null" >
+        out_trade_no,
+      </if>
+      <if test="payChannel != null" >
+        pay_channel,
+      </if>
+      <if test="productAmountTotal != null" >
+        product_amount_total,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="shopUuid != null" >
+        shop_uuid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderUuid != null" >
+        #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deAdUuid != null" >
+        #{deAdUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsFee != null" >
+        #{logisticsFee,jdbcType=DOUBLE},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmountTotal != null" >
+        #{orderAmountTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderlogisticsNo != null" >
+        #{orderlogisticsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null" >
+        #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payChannel != null" >
+        #{payChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="productAmountTotal != null" >
+        #{productAmountTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopUuid != null" >
+        #{shopUuid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.beini.generatormybatis.pojo.Order" >
+    update t_order
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deAdUuid != null" >
+        de_ad_uuid = #{deAdUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsFee != null" >
+        logistics_fee = #{logisticsFee,jdbcType=DOUBLE},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmountTotal != null" >
+        order_amount_total = #{orderAmountTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderlogisticsNo != null" >
+        orderlogistics_no = #{orderlogisticsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null" >
+        out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payChannel != null" >
+        pay_channel = #{payChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="productAmountTotal != null" >
+        product_amount_total = #{productAmountTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopUuid != null" >
+        shop_uuid = #{shopUuid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_uuid = #{orderUuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.beini.generatormybatis.pojo.Order" >
+    update t_order
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      de_ad_uuid = #{deAdUuid,jdbcType=VARCHAR},
+      logistics_fee = #{logisticsFee,jdbcType=DOUBLE},
+      open_id = #{openId,jdbcType=VARCHAR},
+      order_amount_total = #{orderAmountTotal,jdbcType=DOUBLE},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      orderlogistics_no = #{orderlogisticsNo,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      pay_channel = #{payChannel,jdbcType=VARCHAR},
+      product_amount_total = #{productAmountTotal,jdbcType=DOUBLE},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
+      shop_uuid = #{shopUuid,jdbcType=VARCHAR}
+    where order_uuid = #{orderUuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

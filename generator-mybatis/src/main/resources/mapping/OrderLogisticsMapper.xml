@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.beini.generatormybatis.dao.OrderLogisticsMapper" >
+  <resultMap id="BaseResultMap" type="com.beini.generatormybatis.pojo.OrderLogistics" >
+    <id column="order_log_uuid" property="orderLogUuid" jdbcType="VARCHAR" />
+    <result column="consignee_address" property="consigneeAddress" jdbcType="VARCHAR" />
+    <result column="consignee_realname" property="consigneeRealname" jdbcType="VARCHAR" />
+    <result column="consignee_telphone" property="consigneeTelphone" jdbcType="VARCHAR" />
+    <result column="consignee_telphone2" property="consigneeTelphone2" jdbcType="VARCHAR" />
+    <result column="express_no" property="expressNo" jdbcType="VARCHAR" />
+    <result column="order_uuid" property="orderUuid" jdbcType="VARCHAR" />
+    <result column="zip" property="zip" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_log_uuid, consignee_address, consignee_realname, consignee_telphone, consignee_telphone2, 
+    express_no, order_uuid, zip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_logistics
+    where order_log_uuid = #{orderLogUuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from order_logistics
+    where order_log_uuid = #{orderLogUuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.beini.generatormybatis.pojo.OrderLogistics" >
+    insert into order_logistics (order_log_uuid, consignee_address, consignee_realname, 
+      consignee_telphone, consignee_telphone2, 
+      express_no, order_uuid, zip
+      )
+    values (#{orderLogUuid,jdbcType=VARCHAR}, #{consigneeAddress,jdbcType=VARCHAR}, #{consigneeRealname,jdbcType=VARCHAR}, 
+      #{consigneeTelphone,jdbcType=VARCHAR}, #{consigneeTelphone2,jdbcType=VARCHAR}, 
+      #{expressNo,jdbcType=VARCHAR}, #{orderUuid,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.beini.generatormybatis.pojo.OrderLogistics" >
+    insert into order_logistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderLogUuid != null" >
+        order_log_uuid,
+      </if>
+      <if test="consigneeAddress != null" >
+        consignee_address,
+      </if>
+      <if test="consigneeRealname != null" >
+        consignee_realname,
+      </if>
+      <if test="consigneeTelphone != null" >
+        consignee_telphone,
+      </if>
+      <if test="consigneeTelphone2 != null" >
+        consignee_telphone2,
+      </if>
+      <if test="expressNo != null" >
+        express_no,
+      </if>
+      <if test="orderUuid != null" >
+        order_uuid,
+      </if>
+      <if test="zip != null" >
+        zip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderLogUuid != null" >
+        #{orderLogUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeAddress != null" >
+        #{consigneeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeRealname != null" >
+        #{consigneeRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelphone != null" >
+        #{consigneeTelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelphone2 != null" >
+        #{consigneeTelphone2,jdbcType=VARCHAR},
+      </if>
+      <if test="expressNo != null" >
+        #{expressNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUuid != null" >
+        #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.beini.generatormybatis.pojo.OrderLogistics" >
+    update order_logistics
+    <set >
+      <if test="consigneeAddress != null" >
+        consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeRealname != null" >
+        consignee_realname = #{consigneeRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelphone != null" >
+        consignee_telphone = #{consigneeTelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelphone2 != null" >
+        consignee_telphone2 = #{consigneeTelphone2,jdbcType=VARCHAR},
+      </if>
+      <if test="expressNo != null" >
+        express_no = #{expressNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUuid != null" >
+        order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        zip = #{zip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_log_uuid = #{orderLogUuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.beini.generatormybatis.pojo.OrderLogistics" >
+    update order_logistics
+    set consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      consignee_realname = #{consigneeRealname,jdbcType=VARCHAR},
+      consignee_telphone = #{consigneeTelphone,jdbcType=VARCHAR},
+      consignee_telphone2 = #{consigneeTelphone2,jdbcType=VARCHAR},
+      express_no = #{expressNo,jdbcType=VARCHAR},
+      order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      zip = #{zip,jdbcType=VARCHAR}
+    where order_log_uuid = #{orderLogUuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -15,7 +15,7 @@
 
         <!--连接字符串-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://drdsxzru4p6152zdpublic.drds.aliyuncs.com:3306/beini_test?useSSL=false" userId="beini_test" password="Beini_123"/>
+                        connectionURL="jdbc:mysql:///shop2?useSSL=false" userId="root" password="root"/>
 		<!--指定生成entity实体类的具体位置-->
         <javaModelGenerator targetPackage="com.beini.generatormybatis.pojo" targetProject="D:/git_repository/generator-mybatis/generator-mybatis/src/main/java">
             <property name="enableSubPackages" value="true"/>
@@ -30,6 +30,9 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="shard_table" domainObjectName="ShardTable" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="t_order" domainObjectName="Order" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="order_detail" domainObjectName="OrderDetail" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="order_returns" domainObjectName="OrderReturns" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="order_logistics" domainObjectName="OrderLogistics" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>

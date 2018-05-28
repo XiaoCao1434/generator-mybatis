@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.beini.generatormybatis.dao.OrderReturnsMapper" >
+  <resultMap id="BaseResultMap" type="com.beini.generatormybatis.pojo.OrderReturns" >
+    <id column="order_returns_uuid" property="orderReturnsUuid" jdbcType="VARCHAR" />
+    <result column="consignee_address" property="consigneeAddress" jdbcType="VARCHAR" />
+    <result column="consignee_realname" property="consigneeRealname" jdbcType="VARCHAR" />
+    <result column="consignee_telphone" property="consigneeTelphone" jdbcType="VARCHAR" />
+    <result column="consignee_telphone2" property="consigneeTelphone2" jdbcType="VARCHAR" />
+    <result column="consignee_zip" property="consigneeZip" jdbcType="VARCHAR" />
+    <result column="express_no" property="expressNo" jdbcType="VARCHAR" />
+    <result column="handling_time" property="handlingTime" jdbcType="TIMESTAMP" />
+    <result column="handling_way" property="handlingWay" jdbcType="VARCHAR" />
+    <result column="order_uuid" property="orderUuid" jdbcType="VARCHAR" />
+    <result column="pro_uuid" property="proUuid" jdbcType="VARCHAR" />
+    <result column="return_case" property="returnCase" jdbcType="VARCHAR" />
+    <result column="return_class" property="returnClass" jdbcType="VARCHAR" />
+    <result column="return_submit_time" property="returnSubmitTime" jdbcType="TIMESTAMP" />
+    <result column="returns_amount" property="returnsAmount" jdbcType="DOUBLE" />
+    <result column="returns_type" property="returnsType" jdbcType="VARCHAR" />
+    <result column="seller_punish_fee" property="sellerPunishFee" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_returns_uuid, consignee_address, consignee_realname, consignee_telphone, consignee_telphone2, 
+    consignee_zip, express_no, handling_time, handling_way, order_uuid, pro_uuid, return_case, 
+    return_class, return_submit_time, returns_amount, returns_type, seller_punish_fee
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_returns
+    where order_returns_uuid = #{orderReturnsUuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from order_returns
+    where order_returns_uuid = #{orderReturnsUuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.beini.generatormybatis.pojo.OrderReturns" >
+    insert into order_returns (order_returns_uuid, consignee_address, 
+      consignee_realname, consignee_telphone, consignee_telphone2, 
+      consignee_zip, express_no, handling_time, 
+      handling_way, order_uuid, pro_uuid, 
+      return_case, return_class, return_submit_time, 
+      returns_amount, returns_type, seller_punish_fee
+      )
+    values (#{orderReturnsUuid,jdbcType=VARCHAR}, #{consigneeAddress,jdbcType=VARCHAR}, 
+      #{consigneeRealname,jdbcType=VARCHAR}, #{consigneeTelphone,jdbcType=VARCHAR}, #{consigneeTelphone2,jdbcType=VARCHAR}, 
+      #{consigneeZip,jdbcType=VARCHAR}, #{expressNo,jdbcType=VARCHAR}, #{handlingTime,jdbcType=TIMESTAMP}, 
+      #{handlingWay,jdbcType=VARCHAR}, #{orderUuid,jdbcType=VARCHAR}, #{proUuid,jdbcType=VARCHAR}, 
+      #{returnCase,jdbcType=VARCHAR}, #{returnClass,jdbcType=VARCHAR}, #{returnSubmitTime,jdbcType=TIMESTAMP}, 
+      #{returnsAmount,jdbcType=DOUBLE}, #{returnsType,jdbcType=VARCHAR}, #{sellerPunishFee,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.beini.generatormybatis.pojo.OrderReturns" >
+    insert into order_returns
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderReturnsUuid != null" >
+        order_returns_uuid,
+      </if>
+      <if test="consigneeAddress != null" >
+        consignee_address,
+      </if>
+      <if test="consigneeRealname != null" >
+        consignee_realname,
+      </if>
+      <if test="consigneeTelphone != null" >
+        consignee_telphone,
+      </if>
+      <if test="consigneeTelphone2 != null" >
+        consignee_telphone2,
+      </if>
+      <if test="consigneeZip != null" >
+        consignee_zip,
+      </if>
+      <if test="expressNo != null" >
+        express_no,
+      </if>
+      <if test="handlingTime != null" >
+        handling_time,
+      </if>
+      <if test="handlingWay != null" >
+        handling_way,
+      </if>
+      <if test="orderUuid != null" >
+        order_uuid,
+      </if>
+      <if test="proUuid != null" >
+        pro_uuid,
+      </if>
+      <if test="returnCase != null" >
+        return_case,
+      </if>
+      <if test="returnClass != null" >
+        return_class,
+      </if>
+      <if test="returnSubmitTime != null" >
+        return_submit_time,
+      </if>
+      <if test="returnsAmount != null" >
+        returns_amount,
+      </if>
+      <if test="returnsType != null" >
+        returns_type,
+      </if>
+      <if test="sellerPunishFee != null" >
+        seller_punish_fee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderReturnsUuid != null" >
+        #{orderReturnsUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeAddress != null" >
+        #{consigneeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeRealname != null" >
+        #{consigneeRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelphone != null" >
+        #{consigneeTelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelphone2 != null" >
+        #{consigneeTelphone2,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeZip != null" >
+        #{consigneeZip,jdbcType=VARCHAR},
+      </if>
+      <if test="expressNo != null" >
+        #{expressNo,jdbcType=VARCHAR},
+      </if>
+      <if test="handlingTime != null" >
+        #{handlingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handlingWay != null" >
+        #{handlingWay,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUuid != null" >
+        #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="proUuid != null" >
+        #{proUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="returnCase != null" >
+        #{returnCase,jdbcType=VARCHAR},
+      </if>
+      <if test="returnClass != null" >
+        #{returnClass,jdbcType=VARCHAR},
+      </if>
+      <if test="returnSubmitTime != null" >
+        #{returnSubmitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnsAmount != null" >
+        #{returnsAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="returnsType != null" >
+        #{returnsType,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerPunishFee != null" >
+        #{sellerPunishFee,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.beini.generatormybatis.pojo.OrderReturns" >
+    update order_returns
+    <set >
+      <if test="consigneeAddress != null" >
+        consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeRealname != null" >
+        consignee_realname = #{consigneeRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelphone != null" >
+        consignee_telphone = #{consigneeTelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelphone2 != null" >
+        consignee_telphone2 = #{consigneeTelphone2,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeZip != null" >
+        consignee_zip = #{consigneeZip,jdbcType=VARCHAR},
+      </if>
+      <if test="expressNo != null" >
+        express_no = #{expressNo,jdbcType=VARCHAR},
+      </if>
+      <if test="handlingTime != null" >
+        handling_time = #{handlingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handlingWay != null" >
+        handling_way = #{handlingWay,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUuid != null" >
+        order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="proUuid != null" >
+        pro_uuid = #{proUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="returnCase != null" >
+        return_case = #{returnCase,jdbcType=VARCHAR},
+      </if>
+      <if test="returnClass != null" >
+        return_class = #{returnClass,jdbcType=VARCHAR},
+      </if>
+      <if test="returnSubmitTime != null" >
+        return_submit_time = #{returnSubmitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnsAmount != null" >
+        returns_amount = #{returnsAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="returnsType != null" >
+        returns_type = #{returnsType,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerPunishFee != null" >
+        seller_punish_fee = #{sellerPunishFee,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where order_returns_uuid = #{orderReturnsUuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.beini.generatormybatis.pojo.OrderReturns" >
+    update order_returns
+    set consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      consignee_realname = #{consigneeRealname,jdbcType=VARCHAR},
+      consignee_telphone = #{consigneeTelphone,jdbcType=VARCHAR},
+      consignee_telphone2 = #{consigneeTelphone2,jdbcType=VARCHAR},
+      consignee_zip = #{consigneeZip,jdbcType=VARCHAR},
+      express_no = #{expressNo,jdbcType=VARCHAR},
+      handling_time = #{handlingTime,jdbcType=TIMESTAMP},
+      handling_way = #{handlingWay,jdbcType=VARCHAR},
+      order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      pro_uuid = #{proUuid,jdbcType=VARCHAR},
+      return_case = #{returnCase,jdbcType=VARCHAR},
+      return_class = #{returnClass,jdbcType=VARCHAR},
+      return_submit_time = #{returnSubmitTime,jdbcType=TIMESTAMP},
+      returns_amount = #{returnsAmount,jdbcType=DOUBLE},
+      returns_type = #{returnsType,jdbcType=VARCHAR},
+      seller_punish_fee = #{sellerPunishFee,jdbcType=DOUBLE}
+    where order_returns_uuid = #{orderReturnsUuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

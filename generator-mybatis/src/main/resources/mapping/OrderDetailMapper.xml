@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.beini.generatormybatis.dao.OrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.beini.generatormybatis.pojo.OrderDetail" >
+    <id column="order_detail_uuid" property="orderDetailUuid" jdbcType="VARCHAR" />
+    <result column="discount_amount" property="discountAmount" jdbcType="DOUBLE" />
+    <result column="discount_rate" property="discountRate" jdbcType="DOUBLE" />
+    <result column="number" property="number" jdbcType="DOUBLE" />
+    <result column="order_uuid" property="orderUuid" jdbcType="VARCHAR" />
+    <result column="pro_uuid" property="proUuid" jdbcType="VARCHAR" />
+    <result column="product_mode_desc" property="productModeDesc" jdbcType="VARCHAR" />
+    <result column="product_mode_params" property="productModeParams" jdbcType="VARCHAR" />
+    <result column="product_price" property="productPrice" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_detail_uuid, discount_amount, discount_rate, number, order_uuid, pro_uuid, 
+    product_mode_desc, product_mode_params, product_price, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_detail
+    where order_detail_uuid = #{orderDetailUuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from order_detail
+    where order_detail_uuid = #{orderDetailUuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.beini.generatormybatis.pojo.OrderDetail" >
+    insert into order_detail (order_detail_uuid, discount_amount, discount_rate, 
+      number, order_uuid, pro_uuid, 
+      product_mode_desc, product_mode_params, product_price, 
+      remark)
+    values (#{orderDetailUuid,jdbcType=VARCHAR}, #{discountAmount,jdbcType=DOUBLE}, #{discountRate,jdbcType=DOUBLE}, 
+      #{number,jdbcType=DOUBLE}, #{orderUuid,jdbcType=VARCHAR}, #{proUuid,jdbcType=VARCHAR}, 
+      #{productModeDesc,jdbcType=VARCHAR}, #{productModeParams,jdbcType=VARCHAR}, #{productPrice,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.beini.generatormybatis.pojo.OrderDetail" >
+    insert into order_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderDetailUuid != null" >
+        order_detail_uuid,
+      </if>
+      <if test="discountAmount != null" >
+        discount_amount,
+      </if>
+      <if test="discountRate != null" >
+        discount_rate,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="orderUuid != null" >
+        order_uuid,
+      </if>
+      <if test="proUuid != null" >
+        pro_uuid,
+      </if>
+      <if test="productModeDesc != null" >
+        product_mode_desc,
+      </if>
+      <if test="productModeParams != null" >
+        product_mode_params,
+      </if>
+      <if test="productPrice != null" >
+        product_price,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderDetailUuid != null" >
+        #{orderDetailUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="discountAmount != null" >
+        #{discountAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="discountRate != null" >
+        #{discountRate,jdbcType=DOUBLE},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=DOUBLE},
+      </if>
+      <if test="orderUuid != null" >
+        #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="proUuid != null" >
+        #{proUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="productModeDesc != null" >
+        #{productModeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="productModeParams != null" >
+        #{productModeParams,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null" >
+        #{productPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.beini.generatormybatis.pojo.OrderDetail" >
+    update order_detail
+    <set >
+      <if test="discountAmount != null" >
+        discount_amount = #{discountAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="discountRate != null" >
+        discount_rate = #{discountRate,jdbcType=DOUBLE},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=DOUBLE},
+      </if>
+      <if test="orderUuid != null" >
+        order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="proUuid != null" >
+        pro_uuid = #{proUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="productModeDesc != null" >
+        product_mode_desc = #{productModeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="productModeParams != null" >
+        product_mode_params = #{productModeParams,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null" >
+        product_price = #{productPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_detail_uuid = #{orderDetailUuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.beini.generatormybatis.pojo.OrderDetail" >
+    update order_detail
+    set discount_amount = #{discountAmount,jdbcType=DOUBLE},
+      discount_rate = #{discountRate,jdbcType=DOUBLE},
+      number = #{number,jdbcType=DOUBLE},
+      order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      pro_uuid = #{proUuid,jdbcType=VARCHAR},
+      product_mode_desc = #{productModeDesc,jdbcType=VARCHAR},
+      product_mode_params = #{productModeParams,jdbcType=VARCHAR},
+      product_price = #{productPrice,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where order_detail_uuid = #{orderDetailUuid,jdbcType=VARCHAR}
+  </update>
+</mapper>
